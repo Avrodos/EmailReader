@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Email} from "./interfaces/email";
 
 @Component({
   selector: 'app-email-reader-basic',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailReaderBasicComponent implements OnInit {
 
-  constructor() { }
+  email: Email;
+
+  constructor() {
+    this.email = {from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
+
+  }
 
   ngOnInit(): void {
+    this.email = {from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
   }
 
 }

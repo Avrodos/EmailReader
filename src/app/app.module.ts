@@ -8,19 +8,23 @@ import {RouterModule} from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatIconModule} from '@angular/material/icon';
+import {FormsModule} from "@angular/forms";
+import { HighlightDirective } from './email-reader-basic/directives/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmailReaderBasicComponent
+    EmailReaderBasicComponent,
+    HighlightDirective
   ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        NgbModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

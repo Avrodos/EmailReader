@@ -7,60 +7,44 @@
     <form>
       <div class="mb-3 mt-3">
         <label for="originEmail" class="form-label">Sender's email address</label>
-        <input type="email" class="form-control" id="originEmail" aria-describedby="emailHelp" placeholder="name@example.com">
+        <input type="email" class="form-control" id="originEmail" aria-describedby="emailHelp"
+               [(ngModel)]="email.from" name="from" readonly
+               appHighlight>
         <div id="originEmailHelp" class="form-text">The sender of the email.</div>
       </div>
       <div class="mb-3">
         <label for="destinationEmail" class="form-label">Receiver's email address</label>
-        <input type="email" class="form-control" id="destinationEmail" aria-describedby="emailHelp" placeholder="name@example.com">
-        <div id="destinationEmailHelp" class="form-text">The recipient of the email.</div>
+        <input type="email" class="form-control" id="destinationEmail" aria-describedby="emailHelp"
+               [(ngModel)]="email.to" name="to"
+               [ngClass]="email.to == ''? 'bg-danger': ''"
+               appHighlight>
+        <div *ngIf="!email.to.length; else elseBlock" class="form-text">Please enter a mail.</div>
+        <ng-template #elseBlock><div id="destinationEmailHelp" class="form-text">The recipient of the email.</div></ng-template>
+
       </div>
       <div class="mb-3">
         <label for="subject" class="form-label">Subject</label>
-        <input type="email" class="form-control" id="subject" placeholder="Default Mail Subject">
+        <input type="email" class="form-control" id="subject"
+               [(ngModel)]="email.subject" name="subject"
+               appHighlight>
       </div>
       <div class="mb-3">
         <label for="emailContent" class="form-label">Email Content</label>
-        <textarea class="form-control" id="emailContent" rows="3"></textarea>
+        <textarea class="form-control" id="emailContent" rows="3"
+                  [(ngModel)]="email.body" name="body"
+                  appHighlight></textarea>
       </div>
       <button type="submit" class="btn btn-primary mb-3">Submit</button>
     </form>
     <hr/>
     <div class="viewer mt-3">
-      <h2>Available Mails: </h2>
-      <table class="table mb-3">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Sender</th>
-          <th scope="col">Receiver</th>
-          <th scope="col">Subject</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>peter.parker@zylker.com</td>
-          <td>Jane.Smith@outlook.com</td>
-          <td>Madrid Rio Tour</td>
-          <td class="d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>googledev-noreply@google.com></td>
-          <td>peter.parker@zylker.com</td>
-          <td>Welcome to Google Developers</td>
-          <td class="d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>noreply@github.com</td>
-          <td>Jane.Smith@outlook.com</td>
-          <td>[GitHub] A third-party OAuth application has been added to your account</td>
-          <td class="d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-        </tr>
-        </tbody>
-      </table>
+      <h2>Mail Viewer: </h2>
+      <p>
+        From: {{email.from}} <br>
+        To: {{email.to}} <br>
+        Subject: {{email.subject}} <br>
+        Body: {{email.body}}
+      </p>
 
     </div>
   </div>
