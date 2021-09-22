@@ -12,29 +12,45 @@
                appHighlight>
         <div id="originEmailHelp" class="form-text">The sender of the email.</div>
       </div>
+
       <div class="mb-3">
         <label for="destinationEmail" class="form-label">Receiver's email address</label>
         <input type="email" class="form-control" id="destinationEmail" aria-describedby="emailHelp"
                [(ngModel)]="email.to" name="to"
                [ngClass]="email.to == ''? 'bg-danger': ''"
                appHighlight>
-        <div *ngIf="!email.to.length; else elseBlock" class="form-text">Please enter a mail.</div>
-        <ng-template #elseBlock><div id="destinationEmailHelp" class="form-text">The recipient of the email.</div></ng-template>
+        <div *ngIf="!email.to.length; else elseBlockTo" class="form-text">Please enter a mail.</div>
+        <ng-template #elseBlockTo><div id="destinationEmailHelp" class="form-text">The recipient of the email.</div></ng-template>
 
       </div>
+
       <div class="mb-3">
         <label for="subject" class="form-label">Subject</label>
         <input type="email" class="form-control" id="subject"
                [(ngModel)]="email.subject" name="subject"
+               [ngClass]="email.subject.length > 50 ? 'bg-danger' : ''"
                appHighlight>
+        <div *ngIf="(email.subject.length > 50); else elseBlockSubject" class="form-text">The subject is too long.</div>
+        <ng-template #elseBlockSubject><div id="subjectHelp" class="form-text">The subject of the email.</div></ng-template>
       </div>
+
       <div class="mb-3">
         <label for="emailContent" class="form-label">Email Content</label>
         <textarea class="form-control" id="emailContent" rows="3"
                   [(ngModel)]="email.body" name="body"
                   appHighlight></textarea>
       </div>
-      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+
+      <button class="btn btn-secondary mb-3" (click)="cleanFields()">Clean</button>
+      <button type="submit" class="btn btn-primary mb-3 float-end" (click)="showSendMessage()">Send</button>
+      <div class="row"  *ngIf="showMyMessage">
+        <div class="col-xs-12">
+          <p class="alert alert-success">
+            <strong>Sending Success!</strong> The email '{{email.subject}}' to '{{email.to}}' has been sent.
+          </p>
+        </div>
+      </div>
+
     </form>
     <hr/>
     <div class="viewer mt-3">

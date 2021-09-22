@@ -9,6 +9,7 @@ import {Email} from "./interfaces/email";
 export class EmailReaderBasicComponent implements OnInit {
 
   email: Email;
+  showMyMessage : boolean = false;
 
   constructor() {
     this.email = {from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
@@ -19,4 +20,17 @@ export class EmailReaderBasicComponent implements OnInit {
     this.email = {from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
   }
 
+  showSendMessage() {
+    this.showMyMessage = true;
+    setTimeout(() => {
+      this.showMyMessage = false
+    }, 5000)
+  }
+
+
+  cleanFields() {
+    this.email.to = "";
+    this.email.subject = "";
+    this.email.body = "";
+  }
 }
