@@ -10,12 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from "@angular/forms";
 import { HighlightDirective } from './email-reader-basic/directives/highlight.directive';
+import { EmailReaderFormComponent } from './email-reader-form/email-reader-form.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
     AppComponent,
     EmailReaderBasicComponent,
-    HighlightDirective
+    HighlightDirective,
+    EmailReaderFormComponent
   ],
     imports: [
         BrowserModule,
@@ -23,7 +26,8 @@ import { HighlightDirective } from './email-reader-basic/directives/highlight.di
         RouterModule,
         BrowserAnimationsModule,
         MatIconModule,
-        FormsModule
+        FormsModule,
+        Ng2SearchPipeModule
     ],
   providers: [],
   bootstrap: [AppComponent]
