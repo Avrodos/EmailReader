@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="viewer mt-3">
+    <h3> List of Mails </h3>
+
+    <br>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Body</th>
+        <th scope="col">Functions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let email of emailList">
+        <td> {{email.from}} </td>
+        <td> {{email.to}} </td>
+        <td> {{email.subject}} </td>
+        <td> {{email.body}} </td>
+        <td>  <button class="btn btn-secondary btn-sm me-1"><i class="bi bi-envelope-open"></i></button>
+              <button class="btn btn-secondary btn-sm"
+                      (click)="deleteMail(email)"
+              ><i class="bi bi-trash"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="float-end btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Compose</button>
+  </div>
+</div>
+
