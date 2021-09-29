@@ -1,9 +1,11 @@
 <div class="container">
   <div class="viewer mt-3">
     <h3> List of Mails </h3>
-
     <br>
-    <table class="table">
+    <div class="input-group mb-3"><span class="input-group-text">Filter</span>
+      <input id="filter" type="text" [ngModel]="filterText" (ngModelChange)="valuechange($event)" class="form-control" placeholder="Type here...">
+    </div>
+    <table class="table table-striped">
       <thead>
       <tr>
         <th scope="col">From</th>
@@ -13,8 +15,8 @@
         <th scope="col">Functions</th>
       </tr>
       </thead>
-      <tbody>
-      <tr *ngFor="let email of emailList">
+      <tbody class="searchable">
+      <tr *ngFor="let email of emailList ">
         <td> {{email.from}} </td>
         <td> {{email.to}} </td>
         <td> {{email.subject}} </td>
@@ -30,7 +32,9 @@
       </tr>
       </tbody>
     </table>
-    <button class="float-end btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Compose</button>
+    <button class="float-end btn btn-primary"
+          [routerLink]="['/form']"
+    ><i class="bi bi-plus-lg me-2"></i>Compose</button>
   </div>
 </div>
 

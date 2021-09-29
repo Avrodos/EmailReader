@@ -6,7 +6,7 @@ import {Email} from "../interfaces/email";
 })
 export class EmailServiceService {
 
-  private emailList: Array<Email>;
+  public readonly emailList: Array<Email>;
 
   constructor() {
     this.emailList = [];
@@ -34,6 +34,11 @@ export class EmailServiceService {
       mail = {id: -1, from: "", to: "", subject:"", body:""};
     }
     return mail;
+  }
+
+  addMail(email: Email) {
+    this.emailList.push(email);
+    console.log(this.emailList);
   }
 
 }

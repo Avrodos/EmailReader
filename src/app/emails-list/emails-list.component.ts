@@ -10,9 +10,11 @@ import {EmailServiceService} from "../services/email-service.service";
 export class EmailsListComponent implements OnInit {
 
   emailList: Array<Email>;
+  filterText: string;
 
   constructor(private mailService: EmailServiceService) {
     this.emailList = [];
+    this.filterText = "";
   }
 
   ngOnInit(): void {
@@ -28,4 +30,14 @@ export class EmailsListComponent implements OnInit {
     this.emailList = this.mailService.getAllMails();
   }
 
+  applyFilter(filterValue: string) {
+    let filterValueLower = filterValue.toLowerCase();
+    this.emailList = this.emailList.filter((email) => email.from.toLowerCase().includes(filterValueLower) || email.to.toLowerCase().includes(filterValueLower) || email.subject.toLowerCase().includes(filterValueLower) || email.body.toLowerCase().includes(filterValueLower));
+  }
+
+  valuechange(newValue: string) {
+    this.filterText = newValue;
+    this.refreshMails();
+    this.applyFilter(this.filterText);
+  }
 }
