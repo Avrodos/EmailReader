@@ -15,7 +15,7 @@ export class EmailReaderFormComponent implements OnInit {
 
 
   constructor() {
-    this.email = {from: "", to: "", subject: "", body: ""};
+    this.email = {id: 0, from: "", to: "", subject: "", body: ""};
   }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class EmailReaderFormComponent implements OnInit {
   }
 
   sendForm(data: any) {
-    let newEmail = {from: data.fromEmail, to: data.destinationEmail, subject: data.subject, body: data.body};
+    let newEmail = {id: 0,from: data.fromEmail, to: data.destinationEmail, subject: data.subject, body: data.body};
     this.emailList.push(newEmail);
     alert("Entered Data: From: " + newEmail.from + " To: " + newEmail.to + " Subject: " + newEmail.subject + " Body: " + newEmail.body);
     this.clear();

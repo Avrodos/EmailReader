@@ -12,12 +12,12 @@ export class EmailReaderBasicComponent implements OnInit {
   showMyMessage : boolean = false;
 
   constructor() {
-    this.email = {from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
+    this.email = {id: 0, from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
 
   }
 
   ngOnInit(): void {
-    this.email = {from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
+    this.email = {id: 0, from: "sajjad.ahmad@alumnos.upm.es", to: "", subject: "", body: ""};
   }
 
   showSendMessage() {

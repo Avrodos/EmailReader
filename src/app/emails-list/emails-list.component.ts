@@ -19,8 +19,8 @@ export class EmailsListComponent implements OnInit {
     this.emailList = this.mailService.getAllMails();
   }
 
-  deleteMail(email : Email) {
-    this.mailService.deleteMail(email);
+  deleteMail(emailID : number) {
+    this.mailService.deleteMail(emailID);
     this.refreshMails();
   }
 
